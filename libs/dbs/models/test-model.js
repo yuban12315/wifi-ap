@@ -1,9 +1,9 @@
-let mongoose=require('./../mognoose')
+const mongoose=require('../mongoose')
 
-let test_schema=new mongoose.Schema({
-
+const test_schema=new mongoose.Schema({
+    data:String
 })
 
-let test=mongoose.model('test',test_schema)
+const test_model=mongoose.model('test',test_schema)
 
-module.exports=test
+module.exports=test_model
