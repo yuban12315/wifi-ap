@@ -76,6 +76,7 @@ class DataService {
         return result
     }
 
+    /*检验多条数据*/
     static checkMany(datas) {
         const result={
             status:false,
