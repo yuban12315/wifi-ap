@@ -3,6 +3,7 @@ const test_model = require('./../dbs/models/test-model'),
     console = require('tracer').console(),
     fs=require('fs')
 
+
 class FileService {
     static getUploadDirName() {
         return `${process.cwd()}\\uploads\\`
@@ -32,18 +33,13 @@ class FileService {
         })
     }
 
+    /*生成文件名*/
     static getTargetFileName() {
         const date=new Date()
         const str=`${date.getFullYear()}-${date.getDay()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}-${uuid().toString().substring(0, 8)}`
         return str
     }
 
-    static
-    async $save_test() {
-        const test = new test_model({data: 'sss'})
-        await test.save()
-    }
 }
 
-module
-    .exports = FileService
+module.exports = FileService
