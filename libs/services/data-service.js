@@ -71,7 +71,6 @@ class DataService {
                 }
             }
         }
-
         result.status = true
         result.msg = '通过结构验证'
         return result

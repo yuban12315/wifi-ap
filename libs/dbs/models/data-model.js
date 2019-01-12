@@ -41,7 +41,6 @@ const data_schema=new mongoose.Schema({
             required:true,
             type:String
         }
-
     }]
 
 })
