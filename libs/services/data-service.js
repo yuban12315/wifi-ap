@@ -40,11 +40,11 @@ class DataService {
             result.msg = 'APs is required'
             return result
         } else {
-            if (!Array.isArray(data.APs)){
+            if (!Array.isArray(data.APs)) {
                 result.msg='data.APs should be an array'
                 return result
             }
-            if (data.APs.length===0){
+            if (data.APs.length===0) {
                 result.msg='data.APs should contain at least one AP data'
                 return result
             }
@@ -75,6 +75,34 @@ class DataService {
         result.msg = '通过结构验证'
         return result
     }
+
+    static checkMany(datas) {
+        const result={
+            status:false,
+            msg:''
+        }
+        if (!Array.isArray(datas)){
+            result.msg='datas should be an array'
+            return result
+        }
+        if (datas.length===0){
+            result.msg = 'datas should contains at least one data'
+            return result
+        }
+        let i=0
+        for(const data of datas) {
+            i++
+            const result0=this.checkData(data)
+            if (!result0.status) {
+                result.msg=`data[${i}] : ${result0.msg}`
+                return result
+            }
+        }
+        result.status=true
+        result.msg='通过结构验证'
+        return result
+    }
+
 }
 
 module.exports = DataService

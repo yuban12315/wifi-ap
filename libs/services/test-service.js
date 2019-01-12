@@ -1,5 +1,5 @@
-let test_model = require('./../dbs/models/test-model')
-let async = require('async')
+const test_model = require('./../dbs/models/test-model')
+const async = require('async')
 
 class test_service {
     constructor() {
@@ -14,14 +14,13 @@ class test_service {
             },
             (callback)=>{
                 //储存
-                let test=new test_model(data)
+                const test=new test_model(data)
                 test.save((err)=>callback(err))
             }
         ], (err) => {
             callback(err)
         })
     }
-
 
 }
 
