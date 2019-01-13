@@ -1,0 +1,4 @@
+[{"mapId":1,"point":{"x":1,"y":1},"MAC":"111","APs":[{"name":"111","MAC":"111","RSSI":"111","frequency":"111"}]},
+{"mapId":1,"point":{"x":1,"y":1},"MAC":"111","APs":[{"name":"111","MAC":"111","RSSI":"111","frequency":"111"}]},
+{"mapId":1,"point":{"x":1,"y":1},"MAC":"111","APs":[{"name":"111","MAC":"111","RSSI":"111","frequency":"111"}]},
+{"mapId":1,"point":{"x":1,"y":1},"MAC":"111","APs":[{"name":"111","MAC":"111","RSSI":"111","frequency":"111"}]}]

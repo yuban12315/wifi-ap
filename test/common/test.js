@@ -1,5 +1,5 @@
-const APs = [{id: 1}, {id: 2}]
-const data={}
-
-console.log(Array.isArray(APs))
-console.log(Array.isArray(data))
+const datas=[1,2,3]
+const _=require('lodash')
+const chunk=require('lodash.chunk')
+const dataArray=_.chunk(datas,200)
+console.log(dataArray)

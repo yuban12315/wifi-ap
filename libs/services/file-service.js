@@ -1,8 +1,6 @@
-const test_model = require('./../dbs/models/test-model'),
-    uuid = require('uuid/v1'),
+const uuid = require('uuid/v1'),
     console = require('tracer').console(),
     fs=require('fs')
-
 
 class FileService {
     static getUploadDirName() {
@@ -15,14 +13,10 @@ class FileService {
      * */
     static checkFile(filename) {
         const strs = filename.split('.')
-
         if (strs.length === 1) {
             return true
         } else if (strs.length === 2) {
-            if (strs[1] === 'txt') {
-                return true
-            }
-            return false
+            return strs[1] === 'txt'
         }
     }
 
@@ -36,8 +30,27 @@ class FileService {
     /*生成文件名*/
     static getTargetFileName() {
         const date=new Date()
-        const str=`${date.getFullYear()}-${date.getDay()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}-${uuid().toString().substring(0, 8)}`
-        return str
+        const name= `${date.getFullYear()}-${date.getMonth()+1}-${date.getDate()}-${date.getHours()}-${date.getMinutes()}-${date.getSeconds()}-${uuid().toString().substring(0, 8)}`
+        return name
+    }
+
+    /*获取文件内数据*/
+    static getData(filePath) {
+        const result={
+            status:false,
+            msg:'',
+            data:[]
+        }
+        try {
+            const fileData=fs.readFileSync(filePath).toString()
+            const data=JSON.parse(fileData)
+            result.status=true
+            result.data=data
+            return result
+        }catch (e) {
+            result.msg=e.message
+            return result
+        }
     }
 
 }

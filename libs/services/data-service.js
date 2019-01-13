@@ -1,3 +1,5 @@
+const chunk=require('lodash.chunk'),
+    data_model=require('./../dbs/models/data-model')
 class DataService {
 
     /**检查数据结构
@@ -82,11 +84,11 @@ class DataService {
             status:false,
             msg:''
         }
-        if (!Array.isArray(datas)){
+        if (!Array.isArray(datas)) {
             result.msg='datas should be an array'
             return result
         }
-        if (datas.length===0){
+        if (datas.length===0) {
             result.msg = 'datas should contains at least one data'
             return result
         }
@@ -104,6 +106,24 @@ class DataService {
         return result
     }
 
+    /*储存数据*/
+    static async save(datas) {
+        const dataArray=chunk(datas,200)
+        try {
+            for (const data of dataArray){
+                await data_model.insertMany(data)
+            }
+            return{
+                status:true,
+                msg:'储存成功'
+            }
+        } catch (e) {
+            return{
+                status:false,
+                msg:e.message
+            }
+        }
+    }
 }
 
 module.exports = DataService
