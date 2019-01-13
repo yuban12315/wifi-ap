@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "debug": "supervisor ./bin/www",
-    "mongo-": "mongod --dbpath D:\\DataBase\\Mongo\\db\\ --logpath D:\\DataBase\\Mongo\\log\\data.log --logappend"
+    "mongo-": "mongod --auth --dbpath D:\\DataBase\\Mongo\\db\\ --logpath D:\\DataBase\\Mongo\\log\\data.log --logappend"
   },
   "dependencies": {
     "async": "^2.4.1",

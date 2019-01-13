@@ -13,7 +13,7 @@ const index = require('./routes/index')
 // const users = require('./routes/users')
 
 const app = express()
-
+//http://123.206.92.213:3000/
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
