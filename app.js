@@ -11,6 +11,7 @@ const console=require('tracer').console()
 
 const index = require('./routes/index')
 // const users = require('./routes/users')
+const position=require('./routes/position')
 
 const app = express()
 //http://123.206.92.213:3000/
@@ -35,13 +36,22 @@ app.use(session({
 }))
 app.use(express.static(path.join(__dirname, 'public')))
 /*跨域*/
-// app.all('*', function (req, res, next) {
-//     res.header('Access-Control-Allow-Origin', '*')
-//     next()
-// })
+app.all('*',function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*')
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Content-Length, Authorization, Accept, X-Requested-With , yourHeaderFeild')
+    res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, OPTIONS')
+
+    if (req.method === 'OPTIONS') {
+        res.send(200) //让options请求快速返回
+    }
+    else {
+        next()
+    }
+})
 
 app.use('/', index)
 //app.use('/users', users);
+app.use('/position',position)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -68,6 +78,8 @@ app.use(function (err, req, res, next) {
     //
     console.log(err.message)
     console.log(err.stack)
+
 })
 
+console.log('Server running on http://127.0.0.1:3000/')
 module.exports = app
