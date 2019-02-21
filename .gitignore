@@ -2,3 +2,4 @@
 node_modules
 
 libs/dbs/config.js
+public/test.html
